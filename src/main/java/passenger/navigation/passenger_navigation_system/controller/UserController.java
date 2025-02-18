@@ -1,23 +1,24 @@
-package controller;
+package passenger.navigation.passenger_navigation_system.controller;
 
-import model.User;
+import passenger.navigation.passenger_navigation_system.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.UserService;
+import passenger.navigation.passenger_navigation_system.service.UserService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT,RequestMethod.DELETE})
 public class UserController {
     @Autowired
     private UserService userService;
 
     @PostMapping(value = "/add",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> addUser(User user){
+    public ResponseEntity<User> addUser(@RequestBody User user){
         User savedUser= userService.addUuser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
@@ -27,13 +28,13 @@ public class UserController {
         return new ResponseEntity<>(userList,HttpStatus.OK);
     }
 
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/delete/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable Long userId){
         userService.deleteUserById(userId);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{userId}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/update/{userId}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user){
         User updatedUser = userService.updateUser(userId, user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);

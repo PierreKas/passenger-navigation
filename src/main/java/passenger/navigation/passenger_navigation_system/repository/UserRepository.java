@@ -1,6 +1,6 @@
-package repository;
+package passenger.navigation.passenger_navigation_system.repository;
 
-import model.User;
+import passenger.navigation.passenger_navigation_system.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

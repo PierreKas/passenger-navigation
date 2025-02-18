@@ -1,4 +1,4 @@
-package model;
+package passenger.navigation.passenger_navigation_system.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class Bus {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -25,6 +26,8 @@ public class Bus {
 
     @Column(name = "number_of_available_seats")
     private Integer numberOfAvailableSeats;
+
+    private String busStatus;
 
     @Column(name = "travel_date")
     private LocalDate travelDate;

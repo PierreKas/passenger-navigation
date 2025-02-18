@@ -1,10 +1,10 @@
-package service;
+package passenger.navigation.passenger_navigation_system.service;
 
 
-import model.Bus;
+import passenger.navigation.passenger_navigation_system.model.Bus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.BusRepository;
+import passenger.navigation.passenger_navigation_system.repository.BusRepository;
 
 
 import java.util.List;
@@ -36,6 +36,7 @@ public class BusService {
             bus.setTravelDate(updatedData.getTravelDate());
             bus.setTotalNumberOfSeats(updatedData.getTotalNumberOfSeats());
             bus.setNumberOfAvailableSeats(updatedData.getNumberOfAvailableSeats());
+            bus.setBusStatus(updatedData.getBusStatus());
 
             return busRepository.save(bus);
         }else {

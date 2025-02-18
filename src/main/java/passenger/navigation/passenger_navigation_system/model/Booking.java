@@ -1,4 +1,4 @@
-package model;
+package passenger.navigation.passenger_navigation_system.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

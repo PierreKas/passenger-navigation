@@ -1,10 +1,10 @@
-package service;
+package passenger.navigation.passenger_navigation_system.service;
 
 
-import model.Booking;
+import passenger.navigation.passenger_navigation_system.model.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.BookingRepository;
+import passenger.navigation.passenger_navigation_system.repository.BookingRepository;
 
 import java.util.List;
 import java.util.Optional;
