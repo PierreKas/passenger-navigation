@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import passenger.navigation.passenger_navigation_system.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -27,7 +28,17 @@ public class UserController {
         List<User> userList= userService.getAllUsers();
         return new ResponseEntity<>(userList,HttpStatus.OK);
     }
+    @GetMapping("/by-id/{id}")
+    public ResponseEntity<Optional<User>> findUserById(@PathVariable Long id){
+        try {
+            Optional<User> user= userService.findById(id);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception e) {
+//            log.error("error ", e);
 
+            return null;
+        }
+    }
     @DeleteMapping("/delete/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable Long userId){
         userService.deleteUserById(userId);

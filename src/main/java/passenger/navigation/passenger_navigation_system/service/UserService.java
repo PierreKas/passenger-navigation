@@ -25,6 +25,8 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
+    public Optional<User> findById(Long id){return userRepository.findById(id);}
+
     public User updateUser(Long userId, User updatedData){
          Optional<User> existingUser =userRepository.findById(userId);
 
